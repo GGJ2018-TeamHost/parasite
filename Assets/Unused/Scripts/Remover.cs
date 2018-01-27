@@ -10,7 +10,7 @@ public class Remover : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		// If the player hits the trigger...
-		if(col.gameObject.tag == "Player")
+		if(col.gameObject.GetComponent<PlayerHealth>().enabled)
 		{
 			// .. stop the camera tracking the player
 			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().enabled = false;
