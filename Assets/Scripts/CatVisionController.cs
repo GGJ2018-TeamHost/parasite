@@ -15,8 +15,9 @@ public class CatVisionController : MonoBehaviour {
 		// Show invisible game objects using cat vision.
 		foreach (GameObject o in visionObjects)
 		{
+            if(o != null)
 			// o.SetActive (state);
-			o.GetComponent<SpriteRenderer>().enabled = state;
+			    o.GetComponent<SpriteRenderer>().enabled = state;
 		}
 	}
 }
