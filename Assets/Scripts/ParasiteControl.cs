@@ -11,6 +11,7 @@ public class ParasiteControl : MonoBehaviour
 
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
 	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
+	public float drag = 5f;                    // Linear drag applied when the player is on the ground.
 	public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	public AudioClip[] taunts;				// Array of clips for when the player taunts.
@@ -75,16 +76,6 @@ public class ParasiteControl : MonoBehaviour
             cameraFollow.player = go.transform;
             host.TakeControl(this);
         }
-    }
-
-    void OnTriggerStay2D(Collider2D other)
-    {
-        grounded = true;
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        grounded = false;
     }
 
     public void ReleaseControl(IHost host, Vector3 releasePoint, Vector2? launchDirection = null, float launchForce = 0f)
@@ -223,4 +214,16 @@ public class ParasiteControl : MonoBehaviour
     {
         Physics2D.IgnoreCollision(collider1, collider2, false);
     }
+
+	void OnTriggerStay2D(Collider2D other)
+	{
+		grounded = true;
+		gameObject.GetComponent<Rigidbody2D>().drag = drag;
+	}
+
+	void OnTriggerExit2D(Collider2D other)
+	{
+		grounded = false;
+		gameObject.GetComponent<Rigidbody2D>().drag = 0f;
+	}
 }
