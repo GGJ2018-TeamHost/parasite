@@ -5,9 +5,36 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Level.unity
-    guid: 69575e6f2904c4c7dafafe28c5ec7068
+    path: Assets/Scenes/Title_Screen.unity
+    guid: bc4cab7fa392f70478a054ca2d2ba619
   - enabled: 1
-    path: Assets/Scenes/Main.unity
+    path: Assets/Scenes/Level_1.unity
+    guid: eeaf1b98f18bb4b9ca86e590ab3cf92d
+  - enabled: 1
+    path: Assets/Scenes/Level_2.unity
     guid: 22925178b1b752d409cdabb910f18269
+  - enabled: 1
+    path: Assets/Scenes/Level_3.unity
+    guid: 41de60c46ff20417d9b3cec64fe05b24
+  - enabled: 0
+    path: Assets/Scenes/Level_4.unity
+    guid: 3af0242baeef16048910b9ab20152647
+  - enabled: 1
+    path: Assets/Scenes/Level 5.unity
+    guid: 6f3ed41e4317f455a9ec9266edbc12e7
+  - enabled: 1
+    path: Assets/Scenes/Zach1.unity
+    guid: f5e73804a56b5b24999287b5c4bfcfa3
+  - enabled: 1
+    path: Assets/Scenes/Simon1.unity
+    guid: 25d6ea53fed7ffc4facca06b3b11aae0
+  - enabled: 1
+    path: Assets/Scenes/Elephant_Level_1.unity
+    guid: 8bb5b9083f57e124f907fb937a698999
+  - enabled: 1
+    path: Assets/Scenes/CatLevel.unity
+    guid: f836634c660dfe2418de19fe35161bd5

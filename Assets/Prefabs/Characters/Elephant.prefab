@@ -88,7 +88,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 200
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -327,9 +327,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   jump: 0
+<<<<<<< HEAD
   moveForce: 50
   maxSpeed: 2.5
   drag: 25
+=======
+  moveForce: 350
+  maxSpeed: 3
+  drag: 5
+>>>>>>> d52f793ddd5691a5401b0acad5519e49b34e290f
   jumpClips:
   - {fileID: 8300000, guid: 794e56824717aad41b77ece96139baf5, type: 3}
   jumpForce: 0
