@@ -12,10 +12,11 @@ public class MovableObject : MonoBehaviour {
     void Start () {
         startX = transform.position.x;
         startY = transform.position.y;
+        Debug.Log(startX + " " + startY);
     }
 	
-    //Default is for a vertical door moving up
-    public void Open(float xRate_ = 0, float yRate_ = .1f)
+    //Default is for a vertical object moving up
+    public void Open(float xRate_, float yRate_)
     {
         xRate = xRate_;
         yRate = yRate_;
@@ -24,9 +25,7 @@ public class MovableObject : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (transform.position.x != startX)
-            gameObject.transform.Translate(-xRate/5, 0, 0);
-        if (transform.position.y != startY)
-            gameObject.transform.Translate(0, -yRate/5, 0);
+            gameObject.transform.Translate(-xRate/10, 0, 0);
+            gameObject.transform.Translate(0, (-yRate/10), 0);
     }
 }
