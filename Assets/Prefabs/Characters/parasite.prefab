@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 1394135988612906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.085, z: 0}
-  m_LocalScale: {x: 0.20829916, y: 0.2642145, z: 0.20829916}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_Children: []
   m_Father: {fileID: 4330255127911300}
   m_RootOrder: 0
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1559650647020688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.94, y: 2.44, z: -1}
+  m_LocalPosition: {x: -7.5, y: 0.8960204, z: -1}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4148570103412574}
@@ -109,9 +109,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.585}
+  m_Offset: {x: 0, y: -0.6}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.45
 --- !u!61 &61448671344449590
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00000011920929, y: -0.062113643}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -135,7 +135,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.61, y: 1.17}
+  m_Size: {x: 1.0082133, y: 1.1475174}
   m_EdgeRadius: 0
 --- !u!82 &82222856234268210
 AudioSource:
@@ -330,21 +330,21 @@ MonoBehaviour:
   moveForce: 150
   maxSpeed: 1.5
   jumpClips:
-  - {fileID: 8300000, guid: 50a8d8a939a0f4e77a0dac6ecd2e582b, type: 3}
-  - {fileID: 8300000, guid: fc55d077383484ac0ad66aa17fcd746f, type: 3}
-  - {fileID: 8300000, guid: dafa1cc4eb8714341a7c595abfba35d8, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   drag: 2.5
   jumpForce: 250
   deadJumpFrames: 10
   taunts:
-  - {fileID: 8300000, guid: 27cbebf9d650249e5b032494eae5322c, type: 3}
-  - {fileID: 8300000, guid: 986fa1b8984964da79d1be0597332fb2, type: 3}
-  - {fileID: 8300000, guid: 18cb2f6181960417299fa419548cade6, type: 3}
-  - {fileID: 8300000, guid: 0c92f302b5186464187ab9b6adcd1282, type: 3}
-  - {fileID: 8300000, guid: 57d899f9f78ef4493b0b79dbc9d55e40, type: 3}
-  - {fileID: 8300000, guid: 0695e43dc27f94eecbf41013ef61b603, type: 3}
-  - {fileID: 8300000, guid: f00d6706bf8224fe39835855574f94c7, type: 3}
-  - {fileID: 8300000, guid: ddd0ca15e5d0a42b98f08337c1690bb1, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   tauntProbability: 50
   tauntDelay: 1
 --- !u!114 &114606708162208728
@@ -364,10 +364,10 @@ MonoBehaviour:
   decayRate: 33
   repeatDamagePeriod: 0.35
   ouchClips:
-  - {fileID: 8300000, guid: 16883b69910904c908f8738ee6d16a7f, type: 3}
-  - {fileID: 8300000, guid: 4825e9268b7c84159b1f2b9cb54850b1, type: 3}
-  - {fileID: 8300000, guid: c6cea8437a02b40b78dfaf913b99be0d, type: 3}
-  - {fileID: 8300000, guid: 4baef03e1cc8f4ab69708f3aedbce21c, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   hurtForce: 100
   damageAmount: 10
   splash: {fileID: 100000, guid: 3c2f4b0a1dcea4377b723eea567d654b, type: 2}
@@ -406,7 +406,7 @@ SpriteRenderer:
   m_SortingLayerID: -1783731295
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e8199c33ba3e9ca49b95edb2356e0c53, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 006ce8d4aa3804d4f9b7b7979800e5fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
