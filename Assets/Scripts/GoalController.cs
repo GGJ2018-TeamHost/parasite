@@ -8,7 +8,7 @@ public class GoalController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<PlayerHealth>().enabled == true)
+        if(collision.gameObject.GetComponent<PlayerHealth>().enabled == true && collision.gameObject.GetComponent<PlayerHealth>().health > 0)
         {
             Debug.Log("Goal Touch!");
 

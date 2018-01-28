@@ -49,8 +49,6 @@ public class FrogControl : MonoBehaviour, IHost
     void Update()
 	{
         var velocity = rigidbody.velocity;
-        if (velocity.magnitude > 0.1f)
-            lastActiveVelocity = velocity;
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		if(Input.GetButtonDown("Jump") && grounded)
 			jump = true;
