@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4561353169184702}
   - component: {fileID: 212314343347731622}
   m_Layer: 0
-  m_Name: Grass_light_2
+  m_Name: LGrassPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
