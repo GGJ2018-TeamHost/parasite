@@ -23,8 +23,11 @@ public class ButtonControl : MonoBehaviour {
             Destroy(linkedDoor);
             Destroy(gameObject);
         }
-        if(collision.collider.tag == "Player")
+        if (collision.collider.tag == "Player")
+        {
+            Debug.Log("Door Opening");
             linkedDoor.Open(xChange, yChange);
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

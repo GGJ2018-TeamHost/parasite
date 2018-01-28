@@ -23,8 +23,10 @@ public class MovableObject : MonoBehaviour {
         xRate = xRate_;
         yRate = yRate_;
         //if (xRate >= 30 || yRate >= 30)
-          //  Destroy(gameObject);
-        gameObject.transform.Translate(xRate, yRate, 0);
+        //  Destroy(gameObject);
+        Debug.Log(xRate + " " + yRate);
+        gameObject.transform.position = gameObject.transform.position + new Vector3(xRate, yRate,0);
+        //gameObject.transform.Translate(xRate, yRate, 0);
     }
 
 	// Update is called once per frame
