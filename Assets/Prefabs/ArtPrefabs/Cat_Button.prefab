@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4552017426645688}
   - component: {fileID: 212259408022650626}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cat_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
