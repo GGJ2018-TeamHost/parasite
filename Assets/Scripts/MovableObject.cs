@@ -12,7 +12,7 @@ public class MovableObject : MonoBehaviour {
     void Start () {
         startX = transform.position.x;
         startY = transform.position.y;
-        Debug.Log(startX + " " + startY);
+        //Debug.Log(startX + " " + startY);
     }
 	
     //Default is for a vertical object moving up
