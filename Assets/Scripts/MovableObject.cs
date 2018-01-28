@@ -8,10 +8,12 @@ public class MovableObject : MonoBehaviour {
     float startY;
     float xRate;
     float yRate;
+    public bool reset;
 
     void Start () {
         startX = transform.position.x;
         startY = transform.position.y;
+        reset = true;
         //Debug.Log(startX + " " + startY);
     }
 	
@@ -25,7 +27,10 @@ public class MovableObject : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-            gameObject.transform.Translate(-xRate/10, 0, 0);
-            gameObject.transform.Translate(0, (-yRate/10), 0);
+        if (reset)
+        {
+            gameObject.transform.Translate(-xRate / 10, 0, 0);
+            gameObject.transform.Translate(0, (-yRate / 10), 0);
+        }
     }
 }
