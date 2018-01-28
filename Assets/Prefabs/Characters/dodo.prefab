@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825031178037146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.55, y: 1.2, z: -1}
+  m_LocalPosition: {x: 6.572341, y: 1.7969742, z: -1}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4957145192431824}
@@ -350,6 +350,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8874fb0a0634a04a4011fc528c6b38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  facingRight: 1
+  jump: 0
+  moveForce: 365
+  maxSpeed: 8
+  drag: 5
+  jumpClips:
+  - {fileID: 8300000, guid: 7e8a57bcc8ec6c14fb3712b1db54c482, type: 3}
+  - {fileID: 8300000, guid: 796c00135d98e3245be9ea778a4e3f35, type: 3}
+  - {fileID: 8300000, guid: 158ddd9de1692bc4a8c327d18cea147c, type: 3}
+  jumpForce: 500
+  taunts: []
+  tauntProbability: 50
+  tauntDelay: 1
+  m_LaunchForce: 750
 --- !u!212 &212443451299059188
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -385,7 +399,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300004, guid: e7d3a1e0e2fac4bd48b6734c2daf4fe1, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.2965517, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.553}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
