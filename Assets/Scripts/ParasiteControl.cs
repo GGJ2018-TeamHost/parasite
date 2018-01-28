@@ -10,15 +10,11 @@ public class ParasiteControl : MonoBehaviour
 
 
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
-<<<<<<< HEAD
 	public float maxSpeed = 2f;
     float initialMaxSpeed = 2f;             // The fastest the player can travel in the x axis.
     public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
-=======
-	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
+
 	public float drag = 5f;                    // Linear drag applied when the player is on the ground.
-	public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
->>>>>>> 44e10d71d72f0793534b241bfdcd9348c206c3b1
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	public AudioClip[] taunts;				// Array of clips for when the player taunts.
 	public float tauntProbability = 50f;	// Chance of a taunt happening.
@@ -86,21 +82,9 @@ public class ParasiteControl : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-    void OnTriggerStay2D(Collider2D other)
-    {
-        grounded = true;
-    }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        grounded = false;
-    }
 
     public void ReleaseControl(IHost host, Vector3 releasePoint, float horizontalVelocity, float launchForce = 0f)
-=======
-    public void ReleaseControl(IHost host, Vector3 releasePoint, Vector2? launchDirection = null, float launchForce = 0f)
->>>>>>> 44e10d71d72f0793534b241bfdcd9348c206c3b1
     {
         var hostControl = ((MonoBehaviour)host);
         hostControl.enabled = false;
