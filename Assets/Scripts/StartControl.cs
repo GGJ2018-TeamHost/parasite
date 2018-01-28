@@ -90,8 +90,6 @@ public class StartControl : MonoBehaviour, IHost
 		else if(h < 0 && facingRight)
 			// ... flip the player.
 			Flip();
-
-
 	}
 	
 	

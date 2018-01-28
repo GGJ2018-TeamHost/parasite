@@ -112,7 +112,7 @@ public class ParasiteControl : MonoBehaviour
 
         //upward force
         maxSpeed = 10;
-        Invoke("ResetSpeed", 1f);
+        Invoke("ResetSpeed", .4f);
         rigidbody.velocity = new Vector2(horizontalVelocity,0);
         rigidbody.AddForce(Vector2.up * launchForce);
 
@@ -172,15 +172,16 @@ public class ParasiteControl : MonoBehaviour
 	    		// ... flip the player.
 	    		Flip();
         }
-		// If the player should jump...
-		if(jump)
+
+        // If the player should jump...
+        if (jump)
 		{
 			// Set the Jump animator trigger parameter.
 			anim.SetTrigger("Jump");
 
 			// Play a random jump audio clip.
-			int i = Random.Range(0, jumpClips.Length);
-			AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
+			//int i = Random.Range(0, jumpClips.Length);
+			//AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
 
 			// Add a vertical force to the player.
 			rigidbody.AddForce(new Vector2(0f, jumpForce));
