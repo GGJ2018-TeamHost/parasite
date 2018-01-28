@@ -63,7 +63,7 @@ public class ParasiteControl : MonoBehaviour
         // If the colliding gameobject is an Enemy...
         var go = col.gameObject;
         var host = go.GetComponent<IHost>();
-        if (host != null)
+        if (host != null && this.GetComponent<PlayerHealth>().health > 0)
         {
             gameObject.SetActive(false);
             var parasiteHealth = GetComponent<PlayerHealth>();
@@ -131,7 +131,7 @@ public class ParasiteControl : MonoBehaviour
 		// The Speed animator parameter is set to the absolute value of the horizontal input.
 		anim.SetFloat("Speed", Mathf.Abs(h));
 
-	    if (grounded)
+	    if (grounded && this.GetComponent<PlayerHealth>().health > 0)
 	    {
 	        // If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
 	        if (h * rigidbody.velocity.x < maxSpeed)
@@ -140,17 +140,17 @@ public class ParasiteControl : MonoBehaviour
 	        // If the player's horizontal velocity is greater than the maxSpeed...
 	        if (Mathf.Abs(rigidbody.velocity.x) > maxSpeed)
 	            rigidbody.velocity = new Vector2(Mathf.Sign(rigidbody.velocity.x) * maxSpeed, rigidbody.velocity.y);
-	    }
+	    
 
-	    // If the input is moving the player right and the player is facing left...
-		if(h > 0 && !facingRight)
-			// ... flip the player.
-			Flip();
-		// Otherwise if the input is moving the player left and the player is facing right...
-		else if(h < 0 && facingRight)
-			// ... flip the player.
-			Flip();
-
+	        // If the input is moving the player right and the player is facing left...
+	    	if(h > 0 && !facingRight)
+	    		// ... flip the player.
+	    		Flip();
+	    	// Otherwise if the input is moving the player left and the player is facing right...
+	    	else if(h < 0 && facingRight)
+	    		// ... flip the player.
+	    		Flip();
+        }
 		// If the player should jump...
 		if(jump)
 		{
