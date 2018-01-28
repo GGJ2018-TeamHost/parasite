@@ -20,9 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4552017426645688}
   - component: {fileID: 212259408022650626}
+  - component: {fileID: 61115004510551276}
+  - component: {fileID: 114239363587092634}
   m_Layer: 12
   m_Name: Cat_Button
-  m_TagString: Untagged
+  m_TagString: catVision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,6 +42,47 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61115004510551276
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045098887026812}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.42, y: 0.66}
+    newSize: {x: 1.42, y: 0.66}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.42, y: 0.66}
+  m_EdgeRadius: 0
+--- !u!114 &114239363587092634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045098887026812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a36e3f0ef7ca2a48852de4e3f0f3d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xChange: 0
+  yChange: 0
+  linkedDoor: {fileID: 0}
+  startingSprite: {fileID: 21300000, guid: 531bc845aac88d74e87c6c868884a71f, type: 3}
+  pushedSprite: {fileID: 21300000, guid: 81a769ef96d3b554b91578b20d028518, type: 3}
 --- !u!212 &212259408022650626
 SpriteRenderer:
   m_ObjectHideFlags: 1
