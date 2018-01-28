@@ -22,6 +22,8 @@ public class MovableObject : MonoBehaviour {
     {
         xRate = xRate_;
         yRate = yRate_;
+        if (xRate >= 30 || yRate >= 30)
+            Destroy(gameObject);
         gameObject.transform.Translate(xRate, yRate, 0);
     }
 
@@ -32,5 +34,6 @@ public class MovableObject : MonoBehaviour {
             gameObject.transform.Translate(-xRate / 10, 0, 0);
             gameObject.transform.Translate(0, (-yRate / 10), 0);
         }
+        
     }
 }
