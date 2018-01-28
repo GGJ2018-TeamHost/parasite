@@ -5,36 +5,24 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Title_Screen.unity
     guid: bc4cab7fa392f70478a054ca2d2ba619
   - enabled: 1
     path: Assets/Scenes/Level_1.unity
-    guid: eeaf1b98f18bb4b9ca86e590ab3cf92d
+    guid: b8dd63c58a2e09b46aefaa1d5a2164d4
   - enabled: 1
     path: Assets/Scenes/Level_2.unity
-    guid: 22925178b1b752d409cdabb910f18269
+    guid: 30969cb42cb8c9a48a574678ebd965e0
   - enabled: 1
     path: Assets/Scenes/Level_3.unity
-    guid: 41de60c46ff20417d9b3cec64fe05b24
-  - enabled: 0
+    guid: 4cf65d57838d847caa86d9b4b26a502f
+  - enabled: 1
     path: Assets/Scenes/Level_4.unity
-    guid: 3af0242baeef16048910b9ab20152647
+    guid: 193b0443ead8646688d7a98d3ffa6e81
   - enabled: 1
-    path: Assets/Scenes/Level 5.unity
-    guid: 6f3ed41e4317f455a9ec9266edbc12e7
+    path: Assets/Scenes/Level_5.unity
+    guid: b1271a90e5a4e8043a6fdfc563993ddc
   - enabled: 1
-    path: Assets/Scenes/Zach1.unity
-    guid: f5e73804a56b5b24999287b5c4bfcfa3
-  - enabled: 1
-    path: Assets/Scenes/Simon1.unity
-    guid: 25d6ea53fed7ffc4facca06b3b11aae0
-  - enabled: 1
-    path: Assets/Scenes/Elephant_Level_1.unity
-    guid: 8bb5b9083f57e124f907fb937a698999
-  - enabled: 1
-    path: Assets/Scenes/CatLevel.unity
-    guid: f836634c660dfe2418de19fe35161bd5
+    path: Assets/Scenes/Level_6.unity
+    guid: d81a0eaeb8214d34c9ef02b874c09f71
