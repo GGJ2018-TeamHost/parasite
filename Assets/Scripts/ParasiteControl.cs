@@ -148,15 +148,20 @@ public class ParasiteControl : MonoBehaviour
 		// The Speed animator parameter is set to the absolute value of the horizontal input.
 		anim.SetFloat("Speed", Mathf.Abs(h));
 
-	    if (grounded && this.GetComponent<PlayerHealth>().health > 0)
-	    {
-	        // If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-			if (h * rigidbody.velocity.x < maxSpeed && grounded)
-	            rigidbody.AddForce(Vector2.right * h * moveForce);
+        if (h * rigidbody.velocity.x < maxSpeed && !grounded)
+        {
+            // ... add a force to the player.
+            //Debug.Log("air control");
+            GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * moveForce * 0.25f);
+        }
 
-			else if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed && !grounded)
-				// ... add a force to the player.
-				GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * moveForce * 0.25f);
+        if (grounded && this.GetComponent<PlayerHealth>().health > 0)
+	    {
+            // If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
+            if (h * rigidbody.velocity.x < maxSpeed && grounded)
+                rigidbody.AddForce(Vector2.right * h * moveForce);
+
+            
 
 	        // If the player's horizontal velocity is greater than the maxSpeed...
 	        if (Mathf.Abs(rigidbody.velocity.x) > maxSpeed)
