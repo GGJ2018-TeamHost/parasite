@@ -6,7 +6,8 @@ public class BreakableObject : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        //Replace with breakable texture
+        GetComponent<SpriteRenderer>().color = new Color(0, 0, 0);
 	}
 
     private void OnCollisionEnter2D(Collision2D collision)
