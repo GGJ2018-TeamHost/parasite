@@ -16,11 +16,12 @@ public class ParasiteControl : MonoBehaviour
 
 	public float drag = 5f;                    // Linear drag applied when the player is on the ground.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
+	public int deadJumpFrames = 10;			// Number of frames after a jump where the character is confirmed to be off the ground.
 	public AudioClip[] taunts;				// Array of clips for when the player taunts.
 	public float tauntProbability = 50f;	// Chance of a taunt happening.
 	public float tauntDelay = 1f;			// Delay for when the taunt should happen.
 
-
+	private int jumpFrames = 0;				// Number of dead jump frames left.
 	private int tauntIndex;					// The index of the taunts array indicating the most recent taunt.
 	//private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	private bool grounded = false;			// Whether or not the player is grounded.
@@ -61,6 +62,9 @@ public class ParasiteControl : MonoBehaviour
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		if(Input.GetButtonDown("Jump") && grounded)
 			jump = true;
+
+		if (jumpFrames > 0)
+			jumpFrames--;
 	}
 
     void OnCollisionEnter2D (Collision2D col)
@@ -147,8 +151,12 @@ public class ParasiteControl : MonoBehaviour
 	    if (grounded && this.GetComponent<PlayerHealth>().health > 0)
 	    {
 	        // If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-	        if (h * rigidbody.velocity.x < maxSpeed)
+			if (h * rigidbody.velocity.x < maxSpeed && grounded)
 	            rigidbody.AddForce(Vector2.right * h * moveForce);
+
+			else if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed && !grounded)
+				// ... add a force to the player.
+				GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * moveForce * 0.25f);
 
 	        // If the player's horizontal velocity is greater than the maxSpeed...
 	        if (Mathf.Abs(rigidbody.velocity.x) > maxSpeed)
@@ -179,6 +187,11 @@ public class ParasiteControl : MonoBehaviour
 
 			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 			jump = false;
+
+			// Set the start of the jump dead frames.
+			jumpFrames = deadJumpFrames;
+			gameObject.GetComponent<Rigidbody2D>().drag = 0f;
+			grounded = false;
 		}
 	}
 	
@@ -239,8 +252,10 @@ public class ParasiteControl : MonoBehaviour
 
 	void OnTriggerStay2D(Collider2D other)
 	{
-		grounded = true;
-		gameObject.GetComponent<Rigidbody2D>().drag = drag;
+		if (jumpFrames >= 0) {
+			grounded = true;
+			gameObject.GetComponent<Rigidbody2D> ().drag = drag;
+		}
 	}
 
 	void OnTriggerExit2D(Collider2D other)
