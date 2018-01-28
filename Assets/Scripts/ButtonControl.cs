@@ -7,6 +7,8 @@ public class ButtonControl : MonoBehaviour {
     public float xChange;
     public float yChange;
     public MovableObject linkedDoor;
+    public Sprite startingSprite;
+    public Sprite pushedSprite;
 	// Use this for initialization
 	void Start () {
 		
@@ -24,7 +26,16 @@ public class ButtonControl : MonoBehaviour {
         if(collision.collider.tag == "Player")
             linkedDoor.Open(xChange, yChange);
     }
-    void Update () {
-		
-	}
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player")
+            gameObject.GetComponent<SpriteRenderer>().sprite = pushedSprite;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player")
+            gameObject.GetComponent<SpriteRenderer>().sprite = startingSprite;
+        
+    }
 }
