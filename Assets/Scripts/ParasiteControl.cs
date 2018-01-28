@@ -10,9 +10,15 @@ public class ParasiteControl : MonoBehaviour
 
 
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
+<<<<<<< HEAD
 	public float maxSpeed = 2f;
     float initialMaxSpeed = 2f;             // The fastest the player can travel in the x axis.
     public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
+=======
+	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
+	public float drag = 5f;                    // Linear drag applied when the player is on the ground.
+	public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
+>>>>>>> 44e10d71d72f0793534b241bfdcd9348c206c3b1
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	public AudioClip[] taunts;				// Array of clips for when the player taunts.
 	public float tauntProbability = 50f;	// Chance of a taunt happening.
@@ -66,7 +72,7 @@ public class ParasiteControl : MonoBehaviour
         // If the colliding gameobject is an Enemy...
         var go = col.gameObject;
         var host = go.GetComponent<IHost>();
-        if (host != null)
+        if (host != null && this.GetComponent<PlayerHealth>().health > 0)
         {
             gameObject.SetActive(false);
             var parasiteHealth = GetComponent<PlayerHealth>();
@@ -80,6 +86,7 @@ public class ParasiteControl : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     void OnTriggerStay2D(Collider2D other)
     {
         grounded = true;
@@ -91,6 +98,9 @@ public class ParasiteControl : MonoBehaviour
     }
 
     public void ReleaseControl(IHost host, Vector3 releasePoint, float horizontalVelocity, float launchForce = 0f)
+=======
+    public void ReleaseControl(IHost host, Vector3 releasePoint, Vector2? launchDirection = null, float launchForce = 0f)
+>>>>>>> 44e10d71d72f0793534b241bfdcd9348c206c3b1
     {
         var hostControl = ((MonoBehaviour)host);
         hostControl.enabled = false;
@@ -146,7 +156,7 @@ public class ParasiteControl : MonoBehaviour
 		// The Speed animator parameter is set to the absolute value of the horizontal input.
 		anim.SetFloat("Speed", Mathf.Abs(h));
 
-	    if (grounded)
+	    if (grounded && this.GetComponent<PlayerHealth>().health > 0)
 	    {
 	        // If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
 	        if (h * rigidbody.velocity.x < maxSpeed)
@@ -155,17 +165,17 @@ public class ParasiteControl : MonoBehaviour
 	        // If the player's horizontal velocity is greater than the maxSpeed...
 	        if (Mathf.Abs(rigidbody.velocity.x) > maxSpeed)
 	            rigidbody.velocity = new Vector2(Mathf.Sign(rigidbody.velocity.x) * maxSpeed, rigidbody.velocity.y);
-	    }
+	    
 
-	    // If the input is moving the player right and the player is facing left...
-		if(h > 0 && !facingRight)
-			// ... flip the player.
-			Flip();
-		// Otherwise if the input is moving the player left and the player is facing right...
-		else if(h < 0 && facingRight)
-			// ... flip the player.
-			Flip();
-
+	        // If the input is moving the player right and the player is facing left...
+	    	if(h > 0 && !facingRight)
+	    		// ... flip the player.
+	    		Flip();
+	    	// Otherwise if the input is moving the player left and the player is facing right...
+	    	else if(h < 0 && facingRight)
+	    		// ... flip the player.
+	    		Flip();
+        }
 		// If the player should jump...
 		if(jump)
 		{
@@ -238,4 +248,16 @@ public class ParasiteControl : MonoBehaviour
     {
         Physics2D.IgnoreCollision(collider1, collider2, false);
     }
+
+	void OnTriggerStay2D(Collider2D other)
+	{
+		grounded = true;
+		gameObject.GetComponent<Rigidbody2D>().drag = drag;
+	}
+
+	void OnTriggerExit2D(Collider2D other)
+	{
+		grounded = false;
+		gameObject.GetComponent<Rigidbody2D>().drag = 0f;
+	}
 }

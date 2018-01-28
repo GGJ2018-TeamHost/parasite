@@ -11,6 +11,7 @@ public class FrogControl : MonoBehaviour, IHost
 
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
 	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
+	public float drag = 5f;                    // Linear drag applied when the player is on the ground.
 	public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	public AudioClip[] taunts;				// Array of clips for when the player taunts.
@@ -168,13 +169,15 @@ public class FrogControl : MonoBehaviour, IHost
         enabled = true;
     }
 
-    void OnTriggerStay2D(Collider2D other)
-    {
-        grounded = true;
-    }
+	void OnTriggerStay2D(Collider2D other)
+	{
+		grounded = true;
+		gameObject.GetComponent<Rigidbody2D>().drag = drag;
+	}
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        grounded = false;
-    }
+	void OnTriggerExit2D(Collider2D other)
+	{
+		grounded = false;
+		gameObject.GetComponent<Rigidbody2D>().drag = 0f;
+	}
 }
