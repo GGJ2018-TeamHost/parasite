@@ -10,8 +10,9 @@ public class ParasiteControl : MonoBehaviour
 
 
 	public float moveForce = 365f;			// Amount of force added to move the player left and right.
-	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
-	public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
+	public float maxSpeed = 2f;
+    float initialMaxSpeed = 2f;             // The fastest the player can travel in the x axis.
+    public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
 	public AudioClip[] taunts;				// Array of clips for when the player taunts.
 	public float tauntProbability = 50f;	// Chance of a taunt happening.
@@ -28,6 +29,8 @@ public class ParasiteControl : MonoBehaviour
 
     Collider2D collider1;
     Collider2D collider2;
+
+    
 
 	void Awake()
 	{
@@ -87,7 +90,7 @@ public class ParasiteControl : MonoBehaviour
         grounded = false;
     }
 
-    public void ReleaseControl(IHost host, Vector3 releasePoint, Vector2? launchDirection = null, float launchForce = 0f)
+    public void ReleaseControl(IHost host, Vector3 releasePoint, float horizontalVelocity, float launchForce = 0f)
     {
         var hostControl = ((MonoBehaviour)host);
         hostControl.enabled = false;
@@ -103,8 +106,15 @@ public class ParasiteControl : MonoBehaviour
         collider2 = go.GetComponent<Collider2D>();
         Physics2D.IgnoreCollision(collider1,collider2 );
         Invoke("ReenableColliders", .25f);
-        
 
+
+        //upward force
+        maxSpeed = 10;
+        Invoke("ResetSpeed", 1f);
+        rigidbody.velocity = new Vector2(horizontalVelocity,0);
+        rigidbody.AddForce(Vector2.up * launchForce);
+
+        /*
         if (launchDirection.HasValue)
         {
             var finalLaunchDirection = launchDirection.Value;
@@ -117,13 +127,18 @@ public class ParasiteControl : MonoBehaviour
 
             rigidbody.AddForce(finalLaunchDirection * launchForce);
         }
-
+        */
 
         var parasiteHealth = GetComponent<PlayerHealth>();
         parasiteHealth.enabled = true;
     }
 
-	void FixedUpdate ()
+    private void ResetSpeed()
+    {
+        maxSpeed = initialMaxSpeed;
+    }
+
+    void FixedUpdate ()
 	{
 		// Cache the horizontal input.
 		float h = Input.GetAxis("Horizontal");

@@ -31,7 +31,7 @@ public class FrogControl : MonoBehaviour, IHost
 
     public float launchForce { get { return m_LaunchForce; } }
     [SerializeField]
-    float m_LaunchForce = 1000f;
+    float m_LaunchForce = 750f;
 
     void Awake()
 	{
@@ -49,17 +49,13 @@ public class FrogControl : MonoBehaviour, IHost
         var velocity = rigidbody.velocity;
         if (velocity.magnitude > 0.1f)
             lastActiveVelocity = velocity;
-
-        // The player is grounded if a linecast to the groundcheck position hits anything on the ground layer.
-        // grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));  
-
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		if(Input.GetButtonDown("Jump") && grounded)
 			jump = true;
 
         if(Input.GetButtonDown("Fire1"))
         {
-            parasite.ReleaseControl(this, transform.position, lastActiveVelocity.normalized, launchForce);
+            parasite.ReleaseControl(this, transform.position, rigidbody.velocity.x, launchForce);
         }
 	}
 

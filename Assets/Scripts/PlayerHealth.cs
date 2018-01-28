@@ -60,7 +60,7 @@ public class PlayerHealth : MonoBehaviour
 
             if (host != null)
             {
-                host.parasite.ReleaseControl(host, transform.position, lastActiveVelocity.normalized, host.launchForce);
+                host.parasite.ReleaseControl(host, transform.position, rigidbody.velocity.x, host.launchForce);
                 Destroy(gameObject);
             }
             else

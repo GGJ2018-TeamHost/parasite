@@ -31,7 +31,7 @@ public class MouseControl : MonoBehaviour, IHost
 
     public float launchForce { get { return m_LaunchForce; } }
     [SerializeField]
-    float m_LaunchForce = 1000f;
+    float m_LaunchForce = 750f;
 
     void Awake()
 	{
@@ -58,7 +58,7 @@ public class MouseControl : MonoBehaviour, IHost
 
         if (Input.GetButtonDown("Fire1"))
         {
-            parasite.ReleaseControl(this, transform.position, lastActiveVelocity.normalized, launchForce);
+            parasite.ReleaseControl(this, transform.position, rigidbody.velocity.x, launchForce);
         }
     }
 
