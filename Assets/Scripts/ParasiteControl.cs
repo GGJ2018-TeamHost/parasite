@@ -86,6 +86,10 @@ public class ParasiteControl : MonoBehaviour
 
     public void ReleaseControl(IHost host, Vector3 releasePoint, float horizontalVelocity, float launchForce = 0f)
     {
+		CatControl cat = host as CatControl;
+		if (cat != null)
+			cat.visionController.setCatObjectVisibility (false);
+
         var hostControl = ((MonoBehaviour)host);
         hostControl.enabled = false;
         var go = hostControl.gameObject;
