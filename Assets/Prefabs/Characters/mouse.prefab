@@ -333,6 +333,7 @@ MonoBehaviour:
   jumpClips:
   - {fileID: 8300000, guid: 50a8d8a939a0f4e77a0dac6ecd2e582b, type: 3}
   jumpForce: 0
+  deadJumpFrames: 10
   taunts: []
   tauntProbability: 50
   tauntDelay: 1

@@ -18,11 +18,12 @@ public class CatControl : MonoBehaviour, IHost
 	public float drag = 5f;                    // Linear drag applied when the player is on the ground.
 	public AudioClip[] jumpClips;			// Array of clips for when the player jumps.
 	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
+	public int deadJumpFrames = 10;			// Number of frames after a jump where the character is confirmed to be off the ground.
 	public AudioClip[] taunts;				// Array of clips for when the player taunts.
 	public float tauntProbability = 50f;	// Chance of a taunt happening.
 	public float tauntDelay = 1f;			// Delay for when the taunt should happen.
 
-
+	private int jumpFrames = 0;
 	private int tauntIndex;					// The index of the taunts array indicating the most recent taunt.
 	// private Transform groundCheck;			// A position marking where to check if the player is grounded.
 	private bool grounded = false;			// Whether or not the player is grounded.
@@ -65,6 +66,9 @@ public class CatControl : MonoBehaviour, IHost
 			// Hide cat vision objects.
 			visionController.setCatObjectVisibility(false);
 		}
+
+		if (jumpFrames > 0)
+			jumpFrames--;
 	}
 
 
@@ -79,9 +83,13 @@ public class CatControl : MonoBehaviour, IHost
 		anim.SetFloat("Speed", Mathf.Abs(h));
 
 		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed)
+		if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed && grounded)
 			// ... add a force to the player.
 			GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * moveForce);
+
+		else if(h * GetComponent<Rigidbody2D>().velocity.x < maxSpeed && !grounded)
+			// ... add a force to the player.
+			GetComponent<Rigidbody2D>().AddForce(Vector2.right * h * moveForce * 0.25f);
 
 		// If the player's horizontal velocity is greater than the maxSpeed...
 		if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > maxSpeed)
@@ -112,6 +120,11 @@ public class CatControl : MonoBehaviour, IHost
 
 			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 			jump = false;
+
+			// Set the start of the jump dead frames.
+			jumpFrames = deadJumpFrames;
+			gameObject.GetComponent<Rigidbody2D>().drag = 0f;
+			grounded = false;
 		}
 	}
 
@@ -181,8 +194,10 @@ public class CatControl : MonoBehaviour, IHost
 
 	void OnTriggerStay2D(Collider2D other)
 	{
-		grounded = true;
-		gameObject.GetComponent<Rigidbody2D>().drag = drag;
+		if (jumpFrames >= 0) {
+			grounded = true;
+			gameObject.GetComponent<Rigidbody2D> ().drag = drag;
+		}
 	}
 
 	void OnTriggerExit2D(Collider2D other)

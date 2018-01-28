@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1825031178037146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.978429, y: 2.3102267, z: -1}
+  m_LocalPosition: {x: -9.304434, y: -1.5206814, z: -1}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4957145192431824}
@@ -325,8 +325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52121b47a452546fb88cf2e9a9352f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 300
-  health: 300
+  maxHealth: 120
+  health: 120
   decay: 1
   decayRate: 33
   repeatDamagePeriod: 0.35
@@ -354,12 +354,13 @@ MonoBehaviour:
   jump: 0
   moveForce: 365
   maxSpeed: 8
-  drag: 5
+  drag: 2.5
   jumpClips:
   - {fileID: 8300000, guid: 7e8a57bcc8ec6c14fb3712b1db54c482, type: 3}
   - {fileID: 8300000, guid: 796c00135d98e3245be9ea778a4e3f35, type: 3}
   - {fileID: 8300000, guid: 158ddd9de1692bc4a8c327d18cea147c, type: 3}
   jumpForce: 500
+  deadJumpFrames: 10
   taunts: []
   tauntProbability: 50
   tauntDelay: 1
