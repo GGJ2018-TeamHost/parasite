@@ -16,6 +16,11 @@ public class ButtonControl : MonoBehaviour {
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        if(xChange >= 30 || yChange >= 30)
+        {
+            Destroy(linkedDoor);
+            Destroy(gameObject);
+        }
         if(collision.collider.tag == "Player")
             linkedDoor.Open(xChange, yChange);
     }
